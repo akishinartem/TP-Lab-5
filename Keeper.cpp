@@ -29,6 +29,7 @@ void Keeper::Add() {
 	int i = 0;
 	while (i < size) {
 		temp[i] = Value[i];
+		i++;
 	}
 	switch (Choose()) {
 	case 1:
