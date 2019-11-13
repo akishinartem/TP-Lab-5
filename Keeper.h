@@ -15,7 +15,8 @@ public:
 	~Keeper();
 	int GetSize();
 	void Add();
-	void Add(int value, ifstream &fin);
+	void Add(int _type, ifstream &fin);
+	void Edit();
 	void Del();
 	void Save();
 	void Load();

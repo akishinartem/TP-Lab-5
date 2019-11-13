@@ -50,5 +50,8 @@
     <ClInclude Include="Keeper.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
+    <ClInclude Include="Data.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

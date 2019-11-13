@@ -1,17 +1,19 @@
 #pragma once
 #include "Base.h"
+#include "Data.h"
 using namespace std;
 
 class Personal : public VYZ {
 private:
-	string FIO;
-	int spec;
+	FIO persFIO;
+	string spec;
 	int tel;
 	string obl;
 public:
 	Personal();
 	Personal(ifstream &fin);
 	~Personal();
+	void Edit();
 	void Save(ofstream& fout);
 	void Print(ostream& out);
 };

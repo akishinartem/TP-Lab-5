@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 	setlocale(LC_ALL, "Rus");
-	Keeper Contain
+	Keeper Contain;
 	int menu = 0;
 	cout << "Добро пожаловать!" << endl;
 	do {

@@ -8,14 +8,14 @@ int VYZ::GetType() {
 	return type;
 }
 
-void VYZ::Save(ofstream& fout) {
-	//
+bool VYZ::IsError() {
+	return this->error;
+}
+
+void VYZ::SetError(bool _error) {
+	this->error = _error;
 }
 
 VYZ::~VYZ() {
-	//
-}
-
-void VYZ::Print(ostream& out) {
 	//
 }
