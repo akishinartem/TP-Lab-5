@@ -1,12 +1,7 @@
 #include "Personal.h"
 
 Personal::Personal() {
-	persFIO.Name = "";
-	persFIO.SurName = "";
-	persFIO.LastName = "";
-	spec = "";
-	tel = 0;
-	obl = "";
+	//
 }
 
 Personal::Personal(ifstream &fin) {

@@ -7,7 +7,7 @@ class Student : public VYZ {
 private:
 	FIO stdFIO;
 	int group;
-	int spec;
+	string spec;
 	int course;
 	float sr_ball;
 public:
