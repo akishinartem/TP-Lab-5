@@ -79,7 +79,6 @@ void Personal::Edit() {
 	default:
 		break;
 	}
-	SetError(false);
 }
 
 void Personal::Save(ofstream& fout) {

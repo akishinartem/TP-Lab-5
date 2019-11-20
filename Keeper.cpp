@@ -1,21 +1,14 @@
 #include "Keeper.h"
 
 int Choose() {
-	try {
-		int x = 0;
-		cout << "choose:" << endl
-			<< "[1] std." << endl
-			<< "[2] prep." << endl
-			<< "[3] pers." << endl
-			<< ">> " << endl;
-		cin >> x;
-		if (x < 1 || x > 3)
-			throw 1;
-		return x;
-	}
-	catch (...) {
-		cout << "error";
-	}
+	int x = 0;
+	cout << "Выберите класс:" << endl
+		<< "[1] Студенты." << endl
+		<< "[2] Преподаватели." << endl
+		<< "[3] Персонал." << endl
+		<< ">> ";
+	cin >> x;
+	return x;
 }
 
 Keeper::Keeper() {
@@ -32,81 +25,90 @@ int Keeper::GetSize() {
 }
 
 void Keeper::Add() {
-	VYZ** temp = new VYZ * [size + 1];
-	int i = 0;
-	while (i < size) {
-		temp[i] = Value[i];
-		i++;
+	try {
+		VYZ** temp = new VYZ * [size + 1];
+		int i = 0;
+		while (i < size) {
+			temp[i] = Value[i];
+			i++;
+		}
+		switch (Choose()) {
+		case 1:
+			temp[size] = new Student;
+			break;
+		case 2:
+			temp[size] = new Prepod;
+			break;
+		case 3:
+			temp[size] = new Personal;
+			break;
+		default:
+			break;
+		}
+		if (!temp[size])
+			throw 1;
+		else
+			cout << "Объект успешно добавлен!" << endl;
+		size++;
+		if (Value)
+			delete[] Value;
+		Value = temp;
 	}
-	switch (Choose()) {
-	case 1:
-		temp[size] = new Student;
-		break;
-	case 2:
-		temp[size] = new Prepod;
-		break;
-	case 3:
-		temp[size] = new Personal;
-		break;
-	default:
-		break;
+	catch (...) {
+		cout << "Объект не был добавлен из-за ошибки." << endl;
 	}
-	if (temp[size]->IsError())
-		cout << "error(-)" << endl;
-	else
-		cout << "+!" << endl;
-	size++;
-	if (Value)
-		delete[] Value;
-	Value = temp;
 }
 
 void Keeper::Add(int _type, ifstream &fin) {
-	VYZ** temp = new VYZ * [size + 1];
-	int i = 0;
-	while (i < size) {
-		temp[i] = Value[i];
-		i++;
+	try {
+		VYZ** temp = new VYZ * [size + 1];
+		int i = 0;
+		while (i < size) {
+			temp[i] = Value[i];
+			i++;
+		}
+		switch (_type) {
+		case 1:
+			temp[size] = new Student(fin);
+			break;
+		case 2:
+			temp[size] = new Prepod(fin);
+			break;
+		case 3:
+			temp[size] = new Personal(fin);
+			break;
+		default:
+			break;
+		}
+		if (!temp[size])
+			throw 1;
+		else
+			cout << "Объект успешно добавлен!" << endl;
+		size++;
+		if (Value)
+			delete[] Value;
+		Value = temp;
 	}
-	switch (_type) {
-	case 1:
-		temp[size] = new Student(fin);
-		break;
-	case 2:
-		temp[size] = new Prepod(fin);
-		break;
-	case 3:
-		temp[size] = new Personal(fin);
-		break;
-	default:
-		break;
+	catch (...) {
+		cout << "Объект не был добавлен из-за ошибки." << endl;
 	}
-	if (temp[size]->IsError())
-		cout << "error(-)" << endl;
-	else
-		cout << "+!" << endl;
-	size++;
-	if (Value) {
-		delete[] Value;
-	}
-	Value = temp;
 }
 
 void Keeper::Edit() {
 	int x;
 	if (!size)
-		cout << "empty" << endl;
+		cout << "Контейнер пуст!" << endl;
 	for (int i = 0; i < size; i++) {
 		cout << i;
 		switch (Value[i]->GetType()) {
 		case 1:
-			cout << "std" << endl;
+			cout << "Студент:" << endl;
 			break;
 		case 2:
-			cout << "prep" << endl;
+			cout << "Преподаватель:" << endl;
 			break;
 		case 3:
-			cout << "pers" << endl;
+			cout << "Персонал:" << endl;
 			break;
 		default:
 			break;
@@ -114,27 +116,27 @@ void Keeper::Edit() {
 	}
 	cin >> x;
 	Value[x]->Edit();
-	if (Value[x]->IsError())
-		cout << "error(-)" << endl;
+	if (!Value[x])
+		cout << "Редактирование не удалось из-за ошибки." << endl;
 	else
-		cout << "+" << endl;
+		cout << "Редактирование успешно!" << endl;
 }
 
 void Keeper::Del() {
 	int x;
 	if (!size)
-	cout << "empty" << endl;
+	cout << "Контейнер пуст!" << endl;
 	for (int i = 0; i < size; i++) {
 		cout << i;
 		switch (Value[i]->GetType()) {
 		case 1:
-			cout << "std" << endl;
+			cout << "Студент:" << endl;
 			break;
 		case 2:
-			cout << "prep" << endl;
+			cout << "Преподаватель:" << endl;
 			break;
 		case 3:
-			cout << "pers" << endl;
+			cout << "Персонал:" << endl;
 			break;
 		default:
 			break;
@@ -144,7 +146,7 @@ void Keeper::Del() {
 	if (size == 1) {
 		delete[] Value;
 		Value = nullptr;
-		cout << "deleted!" << endl;
+		cout << "Удаление успешно!" << endl;
 		size--;
 	}
 	VYZ** temp = new VYZ * [size - 1];
@@ -157,7 +159,7 @@ void Keeper::Del() {
 	delete[] Value;
 	Value = temp;
 	size--;
-	cout << "deleted!" << endl;
+	cout << "Удаление успешно!" << endl;
 }
 
 void Keeper::Save() {
@@ -166,13 +168,13 @@ void Keeper::Save() {
 		Value[i]->Save(fout);
 	}
 	fout.close();
-	cout << "saved!" << endl;
+	cout << "Сохранено!" << endl;
 }
 
 void Keeper::Load() {
 	ifstream fin("test.txt");
 	if (fin.fail())
-		cout << "empty file" << endl;
+		cout << "Файл пуст." << endl;
 	int type = 0;
 	while (fin) {
 		fin >> type;
@@ -181,12 +183,12 @@ void Keeper::Load() {
 		Add(type, fin);
 	}
 	fin.close();
-	cout << "loaded!" << endl;
+	cout << "Успешно загружено!" << endl;
 }
 
 ostream& operator<< (ostream& out, Keeper& obj) {
 	if (!obj.size) {
-		cout << "empty!" << endl;
+		cout << "Контейнер пуст!" << endl;
 		return out;
 	}
 	for (int i = 0; i < obj.size; i++) {

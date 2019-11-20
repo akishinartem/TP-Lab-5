@@ -8,14 +8,6 @@ int VYZ::GetType() {
 	return type;
 }
 
-bool VYZ::IsError() {
-	return this->error;
-}
-
-void VYZ::SetError(bool _error) {
-	this->error = _error;
-}
-
 VYZ::~VYZ() {
-	//
+
 }

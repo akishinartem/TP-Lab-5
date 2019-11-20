@@ -89,7 +89,6 @@ void Student::Edit() {
 		cout << "canceled!" << endl;
 		break;
 	}
-	SetError(false);
 }
 
 void Student::Save(ofstream& fout) {

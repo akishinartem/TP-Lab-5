@@ -16,8 +16,8 @@ int main() {
 				<< "[2] Сохранить данные в файл." << endl
 				<< "[3] Загрузить данные из файла." << endl
 				<< "[4] Вывести данные из контейнера." << endl
-				<< "[5] Выход." << endl
-				<< ">> " << endl;
+				<< "[0] Выход." << endl
+				<< ">> ";
 			cin >> menu;
 			if (menu > 5 || menu < 0) {
 				throw 1;
@@ -34,8 +34,6 @@ int main() {
 				break;
 			case 4:
 				cout << Contain;
-				break;
-			case 5:
 				break;
 			default:
 				break;

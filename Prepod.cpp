@@ -70,7 +70,6 @@ void Prepod::Edit() {
 		cout << "canceled!" << endl;
 		break;
 	}
-	SetError(false);
 }
 
 void Prepod::Save(ofstream& fout) {
