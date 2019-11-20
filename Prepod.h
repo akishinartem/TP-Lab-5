@@ -7,7 +7,7 @@ class Prepod : public VYZ {
 private:
 	FIO prepFIO;
 	int groups;
-	int disc;
+	string disc;
 public:
 	Prepod();
 	Prepod(ifstream &fin);

@@ -7,10 +7,8 @@ Student::Student() {
 	cin.ignore(256, '\n');
 	getline(cin, this->stdFIO.Name);
 	cout << "2nd: ";
-	cin.ignore(256, '\n');
 	getline(cin, this->stdFIO.SurName);
 	cout << "3rd: ";
-	cin.ignore(256, '\n');
 	getline(cin, this->stdFIO.LastName);
 	cout << "enter group: ";
 	cin >> this->group;
@@ -27,9 +25,7 @@ Student::Student(ifstream &fin) {
 	SetType(1);
 	fin.ignore(256, '\n');
 	getline (fin, this->stdFIO.Name);
-	fin.ignore(256, '\n');
 	getline(fin, this->stdFIO.SurName);
-	fin.ignore(256, '\n');
 	getline(fin, this->stdFIO.LastName);
 	fin >> this->group;
 	fin.ignore(256, '\n');
@@ -63,10 +59,8 @@ void Student::Edit() {
 		cin.ignore(256, '\n');
 		getline(cin, fio_temp.Name);
 		cout << "2surname: ";
-		cin.ignore(256, '\n');
 		getline(cin, fio_temp.SurName);
 		cout << "3lastname: ";
-		cin.ignore(256, '\n');
 		getline(cin, fio_temp.LastName);
 		stdFIO = fio_temp;
 		break;
