@@ -93,7 +93,9 @@ void Student::Edit() {
 
 void Student::Save(ofstream& fout) {
 	fout << GetType() << endl
-		<< this->stdFIO.Name << this->stdFIO.SurName << this->stdFIO.LastName << endl
+		<< this->stdFIO.Name << endl
+		<< this->stdFIO.SurName << endl
+		<< this->stdFIO.LastName << endl
 		<< this->group << endl
 		<< this->spec << endl
 		<< this->course << endl

@@ -83,7 +83,9 @@ void Personal::Edit() {
 
 void Personal::Save(ofstream& fout) {
 	fout << GetType() << endl
-		<< this->persFIO.Name << this->persFIO.SurName << this->persFIO.LastName << endl
+		<< this->persFIO.Name << endl
+		<< this->persFIO.SurName << endl
+		<< this->persFIO.LastName << endl
 		<< this->spec << endl
 		<< this->tel << endl
 		<< this->obl << endl;

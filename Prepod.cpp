@@ -74,7 +74,9 @@ void Prepod::Edit() {
 
 void Prepod::Save(ofstream& fout) {
 	fout << GetType() << endl
-		<< this->prepFIO.Name << this->prepFIO.SurName << this->prepFIO.LastName << endl
+		<< this->prepFIO.Name << endl
+		<< this->prepFIO.SurName << endl
+		<< this->prepFIO.LastName << endl
 		<< this->groups << endl
 		<< this->disc << endl;
 }
