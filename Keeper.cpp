@@ -42,8 +42,6 @@ void Keeper::Add() {
 		case 3:
 			temp[size] = new Personal;
 			break;
-		default:
-			break;
 		}
 		if (!temp[size])
 			throw 1;
@@ -77,8 +75,6 @@ void Keeper::Add(int _type, ifstream &fin) {
 		case 3:
 			temp[size] = new Personal(fin);
 			break;
-		default:
-			break;
 		}
 		if (!temp[size])
 			throw 1;
@@ -99,27 +95,37 @@ void Keeper::Edit() {
 	if (!size)
 		cout << "Контейнер пуст!" << endl;
 	for (int i = 0; i < size; i++) {
-		cout << i;
+		cout << "[" << i+1 << "] ";
 		switch (Value[i]->GetType()) {
 		case 1:
-			cout << "Студент:" << endl;
+			cout << "Студент" << endl;
 			break;
 		case 2:
-			cout << "Преподаватель:" << endl;
+			cout << "Преподаватель" << endl;
 			break;
 		case 3:
-			cout << "Персонал:" << endl;
+			cout << "Персонал" << endl;
 			break;
 		default:
 			break;
 		}
 	}
-	cin >> x;
-	Value[x]->Edit();
-	if (!Value[x])
-		cout << "Редактирование не удалось из-за ошибки." << endl;
-	else
-		cout << "Редактирование успешно!" << endl;
+	try {
+		cout << ">> ";
+		cin >> x;
+		if ((x < 1) || (x > size)) {
+			throw 1;
+		}
+		x -= 1;
+		Value[x]->Edit();
+		if (!Value[x])
+			cout << "Редактирование не удалось." << endl;
+		else
+			cout << "Редактирование завершено." << endl;
+	}
+	catch (...) {
+		cout << "Выбранный пункт недоступен." << endl;
+	}
 }
 
 void Keeper::Del() {
