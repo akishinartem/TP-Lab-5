@@ -2,17 +2,17 @@
 
 Prepod::Prepod() {
 	SetType(2);
-	cout << "enter name" << endl
-		<< "1st: ";
+	cout << "Введите ФИО преподавателя:" << endl
+		<< "Имя: ";
 	cin.ignore(256, '\n');
 	getline(cin, this->prepFIO.Name);
-	cout << "2nd: ";
+	cout << "Фамилия: ";
 	getline(cin, this->prepFIO.SurName);
-	cout << "3rd: ";
+	cout << "Отчество: ";
 	getline(cin, this->prepFIO.LastName);
-	cout << "enter groups: ";
+	cout << "Введите группы: ";
 	cin >> this->groups;
-	cout << "enter disc: ";
+	cout << "Введите дисциплину: ";
 	cin.ignore(256, '\n');
 	getline(cin, this->disc);
 }
@@ -29,7 +29,7 @@ Prepod::Prepod(ifstream &fin) {
 }
 
 Prepod::~Prepod() {
-	cout << "prep destructor" << endl;
+	cout << "prep dstrctr" << endl;
 }
 
 void Prepod::Edit() {
@@ -37,37 +37,43 @@ void Prepod::Edit() {
 	FIO fio_temp;
 	int i_temp;
 	string s_temp;
-	cout << "chsoose:" << endl
-		<< "1name" << endl
-		<< "2groups" << endl
-		<< "3disc" << endl
-		<< "0cancel" << endl;
+	cout << "Выберите редактируемый параметр:" << endl
+		<< "[1] ФИО." << endl
+		<< "[2] Группы." << endl
+		<< "[3] Дисциплина." << endl
+		<< "[0] Отмена." << endl;
 	cin >> choose;
 	switch (choose) {
 	case 1:
-		cout << "new" << endl
-			<< "1name: ";
+		cout << "Текущее: ";
+		cout << this->prepFIO.Name << " "
+			<< this->prepFIO.SurName << " "
+			<< this->prepFIO.LastName << endl
+			<< "Новое:  Имя >> ";
 		cin.ignore(256, '\n');
 		getline(cin, fio_temp.Name);
-		cout << "2surname: ";
+		cout << "\tФамилия >> ";
 		getline(cin, fio_temp.SurName);
-		cout << "3lastname: ";
+		cout << "\tОтчество >> ";
 		getline(cin, fio_temp.LastName);
 		prepFIO = fio_temp;
 		break;
 	case 2:
-		cout << "new: ";
+		cout << "Текущее: ";
+		cout << this->groups << endl
+			<< "Новое >> ";
 		cin >> i_temp;
 		groups = i_temp;
 		break;
 	case 3:
-		cout << "new: ";
+		cout << "Текущее: ";
+		cout << this->disc << endl
+			<< "Новое >> ";
 		cin.ignore(256, '\n');
 		getline(cin, s_temp);
 		disc = s_temp;
 		break;
 	default:
-		cout << "canceled!" << endl;
 		break;
 	}
 }
@@ -82,8 +88,9 @@ void Prepod::Save(ofstream& fout) {
 }
 
 void Prepod::Print(ostream& out) {
-	out << "prep" << endl
-		<< "name:" << this->prepFIO.Name << this->prepFIO.SurName << this->prepFIO.LastName << endl
-		<< "groups:" << this->groups << endl
-		<< "disc:" << this->disc << endl;
+	out << "Преподаватель:" << endl
+		<< "ФИО:" << this->prepFIO.Name << " " << this->prepFIO.SurName << " " << this->prepFIO.LastName << endl
+		<< "Группы:" << this->groups << endl
+		<< "Дисциплина:" << this->disc << endl
+		<< "=================================" << endl;
 }

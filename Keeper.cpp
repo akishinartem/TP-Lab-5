@@ -11,6 +11,8 @@ int Choose() {
 	return x;
 }
 
+int count = 0;
+
 Keeper::Keeper() {
 	this->Value = nullptr;
 	this->size = 0;
@@ -79,7 +81,7 @@ void Keeper::Add(int _type, ifstream &fin) {
 		if (!temp[size])
 			throw 1;
 		else
-			cout << "Объект успешно добавлен!" << endl;
+			::count++;
 		size++;
 		if (Value)
 			delete[] Value;
@@ -133,22 +135,22 @@ void Keeper::Del() {
 	if (!size)
 	cout << "Контейнер пуст!" << endl;
 	for (int i = 0; i < size; i++) {
-		cout << i;
 		switch (Value[i]->GetType()) {
 		case 1:
-			cout << "Студент:" << endl;
+			cout << "[" << i+1 << "] Студент." << endl;
 			break;
 		case 2:
-			cout << "Преподаватель:" << endl;
+			cout << "[" << i+1 << "] Преподаватель." << endl;
 			break;
 		case 3:
-			cout << "Персонал:" << endl;
+			cout << "[" << i+1 << "] Персонал." << endl;
 			break;
 		default:
 			break;
 		}
 	}
 	cin >> x;
+	x -= 1;
 	if (size == 1) {
 		delete[] Value;
 		Value = nullptr;
@@ -189,7 +191,14 @@ void Keeper::Load() {
 		Add(type, fin);
 	}
 	fin.close();
-	cout << "Успешно загружено!" << endl;
+	//Склонения учтены до 31 элемента
+	if((::count == 1) || (::count == 21))
+		cout << "Успешно загружен [" << ::count << "] объект." << endl;
+	if(((::count > 1) && (::count < 5)) || ((::count > 21) && (::count < 25)))
+		cout << "Успешно загружено [" << ::count << "] объекта." << endl;
+	if((::count > 4) && (::count < 21))
+		cout << "Успешно загружено [" << ::count << "] объектов." << endl;
+	::count = 0;
 }
 
 ostream& operator<< (ostream& out, Keeper& obj) {

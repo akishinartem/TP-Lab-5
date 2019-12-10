@@ -2,19 +2,19 @@
 
 Personal::Personal() {
 	SetType(3);
-	cout << "enter name" << endl
-		<< "1st: ";
+	cout << "Введите ФИО:" << endl
+		<< "Имя: ";
 	cin.ignore(256, '\n');
 	getline(cin, this->persFIO.Name);
-	cout << "2nd: ";
+	cout << "Фамилия: ";
 	getline(cin, this->persFIO.SurName);
-	cout << "3rd: ";
+	cout << "Отчесво: ";
 	getline(cin, this->persFIO.LastName);
-	cout << "enter spec: ";
+	cout << "Введите специальность: ";
 	getline(cin, this->spec);
-	cout << "enter tel: ";
+	cout << "Введите телефон: ";
 	cin >> this->tel;
-	cout << "enter obl:";
+	cout << "Введите область ответственности:";
 	cin.ignore(256, '\n');
 	getline(cin, this->obl);
 }
@@ -32,7 +32,7 @@ Personal::Personal(ifstream &fin) {
 }
 
 Personal::~Personal() {
-	cout << "pers destructor";
+	cout << "pers dstrctr";
 }
 
 void Personal::Edit() {
@@ -40,38 +40,47 @@ void Personal::Edit() {
 	FIO fio_temp;
 	string s_temp;
 	int i_temp;
-	cout << "chsoose:" << endl
-		<< "1name" << endl
-		<< "2spec" << endl
-		<< "3tel" << endl
-		<< "4obl" << endl
-		<< "0cancel" << endl;
+	cout << "Выберите редактируемый параметр:" << endl
+		<< "[1] ФИО." << endl
+		<< "[2] Специальность." << endl
+		<< "[3] Телефон." << endl
+		<< "[4] Область ответственности." << endl
+		<< "[0] Отмена." << endl;
 	cin >> choose;
 	switch (choose) {
 	case 1:
-		cout << "new" << endl
-			<< "1name: ";
+		cout << "Текущее: ";
+		cout << this->persFIO.Name << " "
+			<< this->persFIO.SurName << " "
+			<< this->persFIO.LastName << endl
+			<< "Новое:  Имя >> ";
 		cin.ignore(256, '\n');
 		getline(cin, fio_temp.Name);
-		cout << "2surname: ";
+		cout << "\tФамилия >> ";
 		getline(cin, fio_temp.SurName);
-		cout << "3lastname: ";
+		cout << "\tОтчество >> ";
 		getline(cin, fio_temp.LastName);
 		persFIO = fio_temp;
 		break;
 	case 2:
-		cout << "new:";
+		cout << "Текущее: ";
+		cout << this->spec << endl
+			<< "Новое >> ";
 		cin.ignore(256, '\n');
 		getline(cin, s_temp);
 		spec = s_temp;
 		break;
 	case 3:
-		cout << "new:";
+		cout << "Текущее: ";
+		cout << this->tel << endl
+			<< "Новое >> ";
 		cin >> i_temp;
 		tel = i_temp;
 		break;
 	case 4:
-		cout << "new:";
+		cout << "Текущее: ";
+		cout << this->obl << endl
+			<< "Новое >> ";
 		cin.ignore(256, '\n');
 		getline(cin, s_temp);
 		obl = s_temp;
@@ -92,9 +101,10 @@ void Personal::Save(ofstream& fout) {
 }
 
 void Personal::Print(ostream& out) {
-	out << "pers" << endl
-		<< "name:" << this->persFIO.Name << this->persFIO.SurName << this->persFIO.LastName << endl
-		<< "spec:" << this->spec << endl
-		<< "tel:" << this->tel << endl
-		<< "obl:" << this->obl << endl;
+	out << "Персонал:" << endl
+		<< "ФИО:" << this->persFIO.Name << this->persFIO.SurName << this->persFIO.LastName << endl
+		<< "Специальность:" << this->spec << endl
+		<< "Телефон:" << this->tel << endl
+		<< "Область ответственности:" << this->obl << endl
+		<< "=================================" << endl;
 }

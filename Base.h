@@ -7,7 +7,6 @@ using namespace std;
 class VYZ {
 private:
 	int type;
-	bool error;
 public:
 	void SetType(int _type);
 	int GetType();
