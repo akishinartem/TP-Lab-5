@@ -4,27 +4,27 @@ Personal::Personal() {
 	try {
 		SetType(3);
 		SetErr(false);
-		cout << "Ââåäèòå ÔÈÎ:" << endl
-			<< "Èìÿ: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¤Ð˜Ðž:" << endl
+			<< "Ð˜Ð¼Ñ: ";
 		cin.ignore(256, '\n');
 		getline(cin, this->persFIO.Name);
-		cout << "Ôàìèëèÿ: ";
+		cout << "Ð¤Ð°Ð¼Ð¸Ð»Ð¸Ñ: ";
 		getline(cin, this->persFIO.SurName);
-		cout << "Îò÷åñâî: ";
+		cout << "ÐžÑ‚Ñ‡ÐµÑÐ²Ð¾: ";
 		getline(cin, this->persFIO.LastName);
-		cout << "Ââåäèòå ñïåöèàëüíîñòü: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚ÑŒ: ";
 		getline(cin, this->spec);
-		cout << "Ââåäèòå òåëåôîí: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‚ÐµÐ»ÐµÑ„Ð¾Ð½: ";
 		cin >> this->tel;
 		if (isalpha(this->tel))
 			throw 1;
-		cout << "Ââåäèòå îáëàñòü îòâåòñòâåííîñòè:";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¾Ð±Ð»Ð°ÑÑ‚ÑŒ Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÐµÐ½Ð½Ð¾ÑÑ‚Ð¸:";
 		cin.ignore(256, '\n');
 		getline(cin, this->obl);
 	}
 	catch (int) {
 		SetErr(true);
-		cout << "Íîìåð òåëåôîíà ìîæåò áûòü òîëüêî ÷èñëîì!" << endl;
+		cout << "ÐÐ¾Ð¼ÐµÑ€ Ñ‚ÐµÐ»ÐµÑ„Ð¾Ð½Ð° Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‡Ð¸ÑÐ»Ð¾Ð¼!" << endl;
 	}
 }
 
@@ -49,50 +49,50 @@ void Personal::Edit() {
 	FIO fio_temp;
 	string s_temp;
 	char i_temp;
-	cout << "Âûáåðèòå ðåäàêòèðóåìûé ïàðàìåòð:" << endl
-		<< "[1] ÔÈÎ." << endl
-		<< "[2] Ñïåöèàëüíîñòü." << endl
-		<< "[3] Òåëåôîí." << endl
-		<< "[4] Îáëàñòü îòâåòñòâåííîñòè." << endl
-		<< "[0] Îòìåíà." << endl;
+	cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€ÑƒÐµÐ¼Ñ‹Ð¹ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€:" << endl
+		<< "[1] Ð¤Ð˜Ðž." << endl
+		<< "[2] Ð¡Ð¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚ÑŒ." << endl
+		<< "[3] Ð¢ÐµÐ»ÐµÑ„Ð¾Ð½." << endl
+		<< "[4] ÐžÐ±Ð»Ð°ÑÑ‚ÑŒ Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÐµÐ½Ð½Ð¾ÑÑ‚Ð¸." << endl
+		<< "[0] ÐžÑ‚Ð¼ÐµÐ½Ð°." << endl;
 	cin >> choose;
 	try {
 		switch (choose) {
 		case 1:
-			cout << "Òåêóùåå: ";
+			cout << "Ð¢ÐµÐºÑƒÑ‰ÐµÐµ: ";
 			cout << this->persFIO.Name << " "
 				<< this->persFIO.SurName << " "
 				<< this->persFIO.LastName << endl
-				<< "Íîâîå:  Èìÿ >> ";
+				<< "ÐÐ¾Ð²Ð¾Ðµ:  Ð˜Ð¼Ñ >> ";
 			cin.ignore(256, '\n');
 			getline(cin, fio_temp.Name);
-			cout << "\tÔàìèëèÿ >> ";
+			cout << "\tÐ¤Ð°Ð¼Ð¸Ð»Ð¸Ñ >> ";
 			getline(cin, fio_temp.SurName);
-			cout << "\tÎò÷åñòâî >> ";
+			cout << "\tÐžÑ‚Ñ‡ÐµÑÑ‚Ð²Ð¾ >> ";
 			getline(cin, fio_temp.LastName);
 			persFIO = fio_temp;
 			break;
 		case 2:
-			cout << "Òåêóùåå: ";
+			cout << "Ð¢ÐµÐºÑƒÑ‰ÐµÐµ: ";
 			cout << this->spec << endl
-				<< "Íîâîå >> ";
+				<< "ÐÐ¾Ð²Ð¾Ðµ >> ";
 			cin.ignore(256, '\n');
 			getline(cin, s_temp);
 			spec = s_temp;
 			break;
 		case 3:
-			cout << "Òåêóùåå: ";
+			cout << "Ð¢ÐµÐºÑƒÑ‰ÐµÐµ: ";
 			cout << this->tel << endl
-				<< "Íîâîå >> ";
+				<< "ÐÐ¾Ð²Ð¾Ðµ >> ";
 			cin >> i_temp;
 			if (isalpha(i_temp))
 				throw 1;
 			tel = i_temp;
 			break;
 		case 4:
-			cout << "Òåêóùåå: ";
+			cout << "Ð¢ÐµÐºÑƒÑ‰ÐµÐµ: ";
 			cout << this->obl << endl
-				<< "Íîâîå >> ";
+				<< "ÐÐ¾Ð²Ð¾Ðµ >> ";
 			cin.ignore(256, '\n');
 			getline(cin, s_temp);
 			obl = s_temp;
@@ -103,7 +103,7 @@ void Personal::Edit() {
 	}
 	catch (int) {
 		SetErr(true);
-		cout << "Íîìåð òåëåôîíà ìîæåò áûòü òîëüêî ÷èñëîì!" << endl;
+		cout << "ÐÐ¾Ð¼ÐµÑ€ Ñ‚ÐµÐ»ÐµÑ„Ð¾Ð½Ð° Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‡Ð¸ÑÐ»Ð¾Ð¼!" << endl;
 	}
 }
 
@@ -118,10 +118,10 @@ void Personal::Save(ofstream& fout) {
 }
 
 void Personal::Print(ostream& out) {
-	out << "Ïåðñîíàë:" << endl
-		<< "ÔÈÎ:" << this->persFIO.Name << " " << this->persFIO.SurName << " " << this->persFIO.LastName << endl
-		<< "Ñïåöèàëüíîñòü:" << this->spec << endl
-		<< "Òåëåôîí:" << this->tel << endl
-		<< "Îáëàñòü îòâåòñòâåííîñòè:" << this->obl << endl
+	out << "ÐŸÐµÑ€ÑÐ¾Ð½Ð°Ð»:" << endl
+		<< "Ð¤Ð˜Ðž:" << this->persFIO.Name << " " << this->persFIO.SurName << " " << this->persFIO.LastName << endl
+		<< "Ð¡Ð¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚ÑŒ:" << this->spec << endl
+		<< "Ð¢ÐµÐ»ÐµÑ„Ð¾Ð½:" << this->tel << endl
+		<< "ÐžÐ±Ð»Ð°ÑÑ‚ÑŒ Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÐµÐ½Ð½Ð¾ÑÑ‚Ð¸:" << this->obl << endl
 		<< "=================================" << endl;
 }
