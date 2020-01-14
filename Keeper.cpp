@@ -2,10 +2,10 @@
 
 int Choose() {
 	int x = 0;
-	cout << "Выберите класс:" << endl
-		<< "[1] Студенты." << endl
-		<< "[2] Преподаватели." << endl
-		<< "[3] Персонал." << endl
+	cout << "Р’С‹Р±РµСЂРёС‚Рµ РєР»Р°СЃСЃ:" << endl
+		<< "[1] РЎС‚СѓРґРµРЅС‚С‹." << endl
+		<< "[2] РџСЂРµРїРѕРґР°РІР°С‚РµР»Рё." << endl
+		<< "[3] РџРµСЂСЃРѕРЅР°Р»." << endl
 		<< ">> ";
 	cin >> x;
 	return x;
@@ -51,10 +51,10 @@ void Keeper::Add() {
 		if (Value)
 			delete[] Value;
 		Value = temp;
-		cout << "Объект успешно добавлен!" << endl;
+		cout << "РћР±СЉРµРєС‚ СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ!" << endl;
 	}
 	catch (int) {
-		cout << "Объект не был добавлен из-за ошибки." << endl;
+		cout << "РћР±СЉРµРєС‚ РЅРµ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ РёР·-Р·Р° РѕС€РёР±РєРё." << endl;
 	}
 }
 
@@ -86,18 +86,18 @@ void Keeper::Add(int _type, ifstream &fin) {
 void Keeper::Edit() {
 	int x;
 	if (!size)
-		cout << "Контейнер пуст!" << endl;
+		cout << "РљРѕРЅС‚РµР№РЅРµСЂ РїСѓСЃС‚!" << endl;
 	for (int i = 0; i < size; i++) {
 		cout << "[" << i+1 << "] ";
 		switch (Value[i]->GetType()) {
 		case 1:
-			cout << "Студент" << endl;
+			cout << "РЎС‚СѓРґРµРЅС‚" << endl;
 			break;
 		case 2:
-			cout << "Преподаватель" << endl;
+			cout << "РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ" << endl;
 			break;
 		case 3:
-			cout << "Персонал" << endl;
+			cout << "РџРµСЂСЃРѕРЅР°Р»" << endl;
 			break;
 		default:
 			break;
@@ -112,29 +112,29 @@ void Keeper::Edit() {
 		x -= 1;
 		Value[x]->Edit();
 		if ((Value[x]->GetErr()) || (!Value[x]))
-			cout << "Редактирование не удалось." << endl;
+			cout << "Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РЅРµ СѓРґР°Р»РѕСЃСЊ." << endl;
 		else
-			cout << "Редактирование завершено." << endl;
+			cout << "Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р·Р°РІРµСЂС€РµРЅРѕ." << endl;
 	}
 	catch (int) {
-		cout << "Выбранный пункт недоступен." << endl;
+		cout << "Р’С‹Р±СЂР°РЅРЅС‹Р№ РїСѓРЅРєС‚ РЅРµРґРѕСЃС‚СѓРїРµРЅ." << endl;
 	}
 }
 
 void Keeper::Del() {
 	int x;
 	if (!size)
-	cout << "Контейнер пуст!" << endl;
+	cout << "РљРѕРЅС‚РµР№РЅРµСЂ РїСѓСЃС‚!" << endl;
 	for (int i = 0; i < size; i++) {
 		switch (Value[i]->GetType()) {
 		case 1:
-			cout << "[" << i+1 << "] Студент." << endl;
+			cout << "[" << i+1 << "] РЎС‚СѓРґРµРЅС‚." << endl;
 			break;
 		case 2:
-			cout << "[" << i+1 << "] Преподаватель." << endl;
+			cout << "[" << i+1 << "] РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ." << endl;
 			break;
 		case 3:
-			cout << "[" << i+1 << "] Персонал." << endl;
+			cout << "[" << i+1 << "] РџРµСЂСЃРѕРЅР°Р»." << endl;
 			break;
 		default:
 			break;
@@ -146,7 +146,7 @@ void Keeper::Del() {
 	if (size == 1) {
 		delete[] Value;
 		Value = nullptr;
-		cout << "Удаление успешно!" << endl;
+		cout << "РЈРґР°Р»РµРЅРёРµ СѓСЃРїРµС€РЅРѕ!" << endl;
 		size--;
 	}
 	VYZ** temp = new VYZ * [size - 1];
@@ -159,7 +159,7 @@ void Keeper::Del() {
 	delete[] Value;
 	Value = temp;
 	size--;
-	cout << "Удаление успешно!" << endl;
+	cout << "РЈРґР°Р»РµРЅРёРµ СѓСЃРїРµС€РЅРѕ!" << endl;
 }
 
 void Keeper::Save() {
@@ -168,13 +168,13 @@ void Keeper::Save() {
 		Value[i]->Save(fout);
 	}
 	fout.close();
-	cout << "Сохранено!" << endl;
+	cout << "РЎРѕС…СЂР°РЅРµРЅРѕ!" << endl;
 }
 
 void Keeper::Load() {
 	ifstream fin("test.txt");
 	if (fin.fail())
-		cout << "Файл пуст." << endl;
+		cout << "Р¤Р°Р№Р» РїСѓСЃС‚." << endl;
 	int type = 0;
 	while (fin) {
 		fin >> type;
@@ -183,19 +183,19 @@ void Keeper::Load() {
 		Add(type, fin);
 	}
 	fin.close();
-	//Склонения учтены до 31 элемента
+	//РЎРєР»РѕРЅРµРЅРёСЏ СѓС‡С‚РµРЅС‹ РґРѕ 31 СЌР»РµРјРµРЅС‚Р°
 	if((::count == 1) || (::count == 21))
-		cout << "Успешно загружен [" << ::count << "] объект." << endl;
+		cout << "РЈСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅ [" << ::count << "] РѕР±СЉРµРєС‚." << endl;
 	if(((::count > 1) && (::count < 5)) || ((::count > 21) && (::count < 25)))
-		cout << "Успешно загружено [" << ::count << "] объекта." << endl;
+		cout << "РЈСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅРѕ [" << ::count << "] РѕР±СЉРµРєС‚Р°." << endl;
 	if((::count > 4) && (::count < 21))
-		cout << "Успешно загружено [" << ::count << "] объектов." << endl;
+		cout << "РЈСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅРѕ [" << ::count << "] РѕР±СЉРµРєС‚РѕРІ." << endl;
 	::count = 0;
 }
 
 ostream& operator<< (ostream& out, Keeper& obj) {
 	if (!obj.size) {
-		cout << "Контейнер пуст!" << endl;
+		cout << "РљРѕРЅС‚РµР№РЅРµСЂ РїСѓСЃС‚!" << endl;
 		return out;
 	}
 	for (int i = 0; i < obj.size; i++) {
