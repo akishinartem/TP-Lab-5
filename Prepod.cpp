@@ -4,25 +4,25 @@ Prepod::Prepod() {
 	try {
 		SetType(2);
 		SetErr(false);
-		cout << "Ââåäèòå ÔÈÎ ïðåïîäàâàòåëÿ:" << endl
-			<< "Èìÿ: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¤Ð˜Ðž Ð¿Ñ€ÐµÐ¿Ð¾Ð´Ð°Ð²Ð°Ñ‚ÐµÐ»Ñ:" << endl
+			<< "Ð˜Ð¼Ñ: ";
 		cin.ignore(256, '\n');
 		getline(cin, this->prepFIO.Name);
-		cout << "Ôàìèëèÿ: ";
+		cout << "Ð¤Ð°Ð¼Ð¸Ð»Ð¸Ñ: ";
 		getline(cin, this->prepFIO.SurName);
-		cout << "Îò÷åñòâî: ";
+		cout << "ÐžÑ‚Ñ‡ÐµÑÑ‚Ð²Ð¾: ";
 		getline(cin, this->prepFIO.LastName);
-		cout << "Ââåäèòå ãðóïïû: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹: ";
 		cin >> this->groups;
 		if (isalpha(this->groups))
 			throw 1;
-		cout << "Ââåäèòå äèñöèïëèíó: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð¸ÑÑ†Ð¸Ð¿Ð»Ð¸Ð½Ñƒ: ";
 		cin.ignore(256, '\n');
 		getline(cin, this->disc);
 	}
 	catch (int) {
 		SetErr(true);
-		cout << "Íîìåð ãðóïïû ìîæåò áûòü òîëüêî ÷èñëîì!" << endl;
+		cout << "ÐÐ¾Ð¼ÐµÑ€ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‡Ð¸ÑÐ»Ð¾Ð¼!" << endl;
 	}
 }
 
@@ -47,41 +47,41 @@ void Prepod::Edit() {
 	FIO fio_temp;
 	char i_temp;
 	string s_temp;
-	cout << "Âûáåðèòå ðåäàêòèðóåìûé ïàðàìåòð:" << endl
-		<< "[1] ÔÈÎ." << endl
-		<< "[2] Ãðóïïû." << endl
-		<< "[3] Äèñöèïëèíà." << endl
-		<< "[0] Îòìåíà." << endl;
+	cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€ÑƒÐµÐ¼Ñ‹Ð¹ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€:" << endl
+		<< "[1] Ð¤Ð˜Ðž." << endl
+		<< "[2] Ð“Ñ€ÑƒÐ¿Ð¿Ñ‹." << endl
+		<< "[3] Ð”Ð¸ÑÑ†Ð¸Ð¿Ð»Ð¸Ð½Ð°." << endl
+		<< "[0] ÐžÑ‚Ð¼ÐµÐ½Ð°." << endl;
 	cin >> choose;
 	try {
 		switch (choose) {
 		case 1:
-			cout << "Òåêóùåå: ";
+			cout << "Ð¢ÐµÐºÑƒÑ‰ÐµÐµ: ";
 			cout << this->prepFIO.Name << " "
 				<< this->prepFIO.SurName << " "
 				<< this->prepFIO.LastName << endl
-				<< "Íîâîå:  Èìÿ >> ";
+				<< "ÐÐ¾Ð²Ð¾Ðµ:  Ð˜Ð¼Ñ >> ";
 			cin.ignore(256, '\n');
 			getline(cin, fio_temp.Name);
-			cout << "\tÔàìèëèÿ >> ";
+			cout << "\tÐ¤Ð°Ð¼Ð¸Ð»Ð¸Ñ >> ";
 			getline(cin, fio_temp.SurName);
-			cout << "\tÎò÷åñòâî >> ";
+			cout << "\tÐžÑ‚Ñ‡ÐµÑÑ‚Ð²Ð¾ >> ";
 			getline(cin, fio_temp.LastName);
 			prepFIO = fio_temp;
 			break;
 		case 2:
-			cout << "Òåêóùåå: ";
+			cout << "Ð¢ÐµÐºÑƒÑ‰ÐµÐµ: ";
 			cout << this->groups << endl
-				<< "Íîâîå >> ";
+				<< "ÐÐ¾Ð²Ð¾Ðµ >> ";
 			cin >> i_temp;
 			if (isalpha(i_temp))
 				throw 1;
 			groups = i_temp;
 			break;
 		case 3:
-			cout << "Òåêóùåå: ";
+			cout << "Ð¢ÐµÐºÑƒÑ‰ÐµÐµ: ";
 			cout << this->disc << endl
-				<< "Íîâîå >> ";
+				<< "ÐÐ¾Ð²Ð¾Ðµ >> ";
 			cin.ignore(256, '\n');
 			getline(cin, s_temp);
 			disc = s_temp;
@@ -92,7 +92,7 @@ void Prepod::Edit() {
 	}
 	catch (int) {
 		SetErr(true);
-		cout << "Íîìåð ãðóïïû ìîæåò áûòü òîëüêî ÷èñëîì!" << endl;
+		cout << "ÐÐ¾Ð¼ÐµÑ€ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‡Ð¸ÑÐ»Ð¾Ð¼!" << endl;
 	}
 }
 
@@ -106,9 +106,9 @@ void Prepod::Save(ofstream& fout) {
 }
 
 void Prepod::Print(ostream& out) {
-	out << "Ïðåïîäàâàòåëü:" << endl
-		<< "ÔÈÎ:" << this->prepFIO.Name << " " << this->prepFIO.SurName << " " << this->prepFIO.LastName << endl
-		<< "Ãðóïïû:" << this->groups << endl
-		<< "Äèñöèïëèíà:" << this->disc << endl
+	out << "ÐŸÑ€ÐµÐ¿Ð¾Ð´Ð°Ð²Ð°Ñ‚ÐµÐ»ÑŒ:" << endl
+		<< "Ð¤Ð˜Ðž:" << this->prepFIO.Name << " " << this->prepFIO.SurName << " " << this->prepFIO.LastName << endl
+		<< "Ð“Ñ€ÑƒÐ¿Ð¿Ñ‹:" << this->groups << endl
+		<< "Ð”Ð¸ÑÑ†Ð¸Ð¿Ð»Ð¸Ð½Ð°:" << this->disc << endl
 		<< "=================================" << endl;
 }
