@@ -4,26 +4,26 @@ Student::Student() {
 	try {
 		SetType(1);
 		SetErr(false);
-		cout << "Ââåäèòå ÔÈÎ ñòóäåíòà:" << endl
-			<< "Èìÿ: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¤Ð˜Ðž ÑÑ‚ÑƒÐ´ÐµÐ½Ñ‚Ð°:" << endl
+			<< "Ð˜Ð¼Ñ: ";
 		cin.ignore(256, '\n');
 		getline(cin, this->stdFIO.Name);
-		cout << "Ôàìèëèÿ: ";
+		cout << "Ð¤Ð°Ð¼Ð¸Ð»Ð¸Ñ: ";
 		getline(cin, this->stdFIO.SurName);
-		cout << "Îò÷åñòâî: ";
+		cout << "ÐžÑ‚Ñ‡ÐµÑÑ‚Ð²Ð¾: ";
 		getline(cin, this->stdFIO.LastName);
-		cout << "Ãðóïïà: ";
+		cout << "Ð“Ñ€ÑƒÐ¿Ð¿Ð°: ";
 		cin >> this->group;
 		if (isalpha(this->group))
 			throw 1;
-		cout << "Ñïåöèàëüíîñòü: ";
+		cout << "Ð¡Ð¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚ÑŒ: ";
 		cin.ignore(256, '\n');
 		getline(cin, this->spec);
-		cout << "Íîìåð êóðñà: ";
+		cout << "ÐÐ¾Ð¼ÐµÑ€ ÐºÑƒÑ€ÑÐ°: ";
 		cin >> this->course;
 		if (isalpha(this->course))
 			throw 2;
-		cout << "Ñðåäíèé áàëë: ";
+		cout << "Ð¡Ñ€ÐµÐ´Ð½Ð¸Ð¹ Ð±Ð°Ð»Ð»: ";
 		cin >> this->sr_ball;
 		if (isalpha(this->sr_ball))
 			throw 3;
@@ -32,13 +32,13 @@ Student::Student() {
 		SetErr(true);
 		switch (err) {
 		case 1:
-			cout << "Íîìåð ãðóïïû ìîæåò áûòü òîëüêî ÷èñëîì!" << endl;
+			cout << "ÐÐ¾Ð¼ÐµÑ€ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‡Ð¸ÑÐ»Ð¾Ð¼!" << endl;
 			break;
 		case 2:
-			cout << "Íîìåð êóðñà ìîæåò áûòü òîëüêî ÷èñëîì!" << endl;
+			cout << "ÐÐ¾Ð¼ÐµÑ€ ÐºÑƒÑ€ÑÐ° Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‡Ð¸ÑÐ»Ð¾Ð¼!" << endl;
 			break;
 		case 3:
-			cout << "Ñðåäíèé áàëë ìîæåò áûòü òîëüêî ÷èñëîì!" << endl;
+			cout << "Ð¡Ñ€ÐµÐ´Ð½Ð¸Ð¹ Ð±Ð°Ð»Ð» Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‡Ð¸ÑÐ»Ð¾Ð¼!" << endl;
 			break;
 		}
 	}
@@ -68,61 +68,61 @@ void Student::Edit() {
 	char i_temp;
 	string s_temp;
 	char f_temp;
-	cout << "Âûáåðèòå ðåäàêòèðóåìûé ïàðàìåòð:" << endl
-		<< "[1] ÔÈÎ." << endl
-		<< "[2] Ãðóïïà." << endl
-		<< "[3] Ñïåöèàëüíîñòü." << endl
-		<< "[4] Íîìåð êóðñà." << endl
-		<< "[5] Ñðåäíèé áàëë." << endl
-		<< "[0] Îòìåíà." << endl
+	cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€ÑƒÐµÐ¼Ñ‹Ð¹ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€:" << endl
+		<< "[1] Ð¤Ð˜Ðž." << endl
+		<< "[2] Ð“Ñ€ÑƒÐ¿Ð¿Ð°." << endl
+		<< "[3] Ð¡Ð¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚ÑŒ." << endl
+		<< "[4] ÐÐ¾Ð¼ÐµÑ€ ÐºÑƒÑ€ÑÐ°." << endl
+		<< "[5] Ð¡Ñ€ÐµÐ´Ð½Ð¸Ð¹ Ð±Ð°Ð»Ð»." << endl
+		<< "[0] ÐžÑ‚Ð¼ÐµÐ½Ð°." << endl
 		<< ">> ";
 	cin >> choose;
 	try {
 		switch (choose) {
 		case 1:
-			cout << "Òåêóùåå: ";
+			cout << "Ð¢ÐµÐºÑƒÑ‰ÐµÐµ: ";
 			cout << this->stdFIO.Name << " "
 				<< this->stdFIO.SurName << " "
 				<< this->stdFIO.LastName << endl
-				<< "Íîâîå:  Èìÿ >> ";
+				<< "ÐÐ¾Ð²Ð¾Ðµ:  Ð˜Ð¼Ñ >> ";
 			cin.ignore(256, '\n');
 			getline(cin, fio_temp.Name);
-			cout << "\tÔàìèëèÿ >> ";
+			cout << "\tÐ¤Ð°Ð¼Ð¸Ð»Ð¸Ñ >> ";
 			getline(cin, fio_temp.SurName);
-			cout << "\tÎò÷åñòâî >> ";
+			cout << "\tÐžÑ‚Ñ‡ÐµÑÑ‚Ð²Ð¾ >> ";
 			getline(cin, fio_temp.LastName);
 			stdFIO = fio_temp;
 			break;
 		case 2:
-			cout << "Òåêóùåå: ";
+			cout << "Ð¢ÐµÐºÑƒÑ‰ÐµÐµ: ";
 			cout << this->group << endl
-				<< "Íîâîå >> ";
+				<< "ÐÐ¾Ð²Ð¾Ðµ >> ";
 			cin >> i_temp;
 			if (isalpha(i_temp))
 				throw 1;
 			group = i_temp;
 			break;
 		case 3:
-			cout << "Òåêóùåå: ";
+			cout << "Ð¢ÐµÐºÑƒÑ‰ÐµÐµ: ";
 			cout << this->spec << endl
-				<< "Íîâîå >> ";
+				<< "ÐÐ¾Ð²Ð¾Ðµ >> ";
 			cin.ignore(256, '\n');
 			getline(cin, s_temp);
 			spec = s_temp;
 			break;
 		case 4:
-			cout << "Òåêóùåå: ";
+			cout << "Ð¢ÐµÐºÑƒÑ‰ÐµÐµ: ";
 			cout << this->course << endl
-				<< "Íîâîå >> ";
+				<< "ÐÐ¾Ð²Ð¾Ðµ >> ";
 			cin >> i_temp;
 			if (isalpha(i_temp))
 				throw 2;
 			course = i_temp;
 			break;
 		case 5:
-			cout << "Òåêóùåå: ";
+			cout << "Ð¢ÐµÐºÑƒÑ‰ÐµÐµ: ";
 			cout << this->sr_ball << endl
-				<< "Íîâîå >> ";
+				<< "ÐÐ¾Ð²Ð¾Ðµ >> ";
 			cin >> f_temp;
 			if (isalpha(f_temp))
 				throw 3;
@@ -136,13 +136,13 @@ void Student::Edit() {
 		SetErr(true);
 		switch (err) {
 		case 1:
-			cout << "Íîìåð ãðóïïû ìîæåò áûòü òîëüêî ÷èñëîì!" << endl;
+			cout << "ÐÐ¾Ð¼ÐµÑ€ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‡Ð¸ÑÐ»Ð¾Ð¼!" << endl;
 			break;
 		case 2:
-			cout << "Íîìåð êóðñà ìîæåò áûòü òîëüêî ÷èñëîì!" << endl;
+			cout << "ÐÐ¾Ð¼ÐµÑ€ ÐºÑƒÑ€ÑÐ° Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‡Ð¸ÑÐ»Ð¾Ð¼!" << endl;
 			break;
 		case 3:
-			cout << "Ñðåäíèé áàëë ìîæåò áûòü òîëüêî ÷èñëîì!" << endl;
+			cout << "Ð¡Ñ€ÐµÐ´Ð½Ð¸Ð¹ Ð±Ð°Ð»Ð» Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‡Ð¸ÑÐ»Ð¾Ð¼!" << endl;
 			break;
 		}
 	}
@@ -160,11 +160,11 @@ void Student::Save(ofstream& fout) {
 }
 
 void Student::Print(ostream& out) {
-	out << "Ñòóäåíò:" << endl
-		<< "ÔÈÎ:" << this->stdFIO.Name << " " << this->stdFIO.SurName << " " << this->stdFIO.LastName << endl
-		<< "Ãðóïïà:" << this->group << endl
-		<< "Ñïåöèàëüíîñòü:" << this->spec << endl
-		<< "Íîìåð êóðñà:" << this->course << endl
-		<< "Ñðåäíèé áàëë:" << this->sr_ball << endl
+	out << "Ð¡Ñ‚ÑƒÐ´ÐµÐ½Ñ‚:" << endl
+		<< "Ð¤Ð˜Ðž:" << this->stdFIO.Name << " " << this->stdFIO.SurName << " " << this->stdFIO.LastName << endl
+		<< "Ð“Ñ€ÑƒÐ¿Ð¿Ð°:" << this->group << endl
+		<< "Ð¡Ð¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚ÑŒ:" << this->spec << endl
+		<< "ÐÐ¾Ð¼ÐµÑ€ ÐºÑƒÑ€ÑÐ°:" << this->course << endl
+		<< "Ð¡Ñ€ÐµÐ´Ð½Ð¸Ð¹ Ð±Ð°Ð»Ð»:" << this->sr_ball << endl
 		<< "=================================" << endl;
 }
