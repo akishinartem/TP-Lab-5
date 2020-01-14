@@ -6,10 +6,10 @@ using namespace std;
 class Student : public VYZ {
 private:
 	FIO stdFIO;
-	int group;
+	char group;
 	string spec;
-	int course;
-	float sr_ball;
+	char course;
+	char sr_ball;
 public:
 	Student();
 	Student(ifstream &fin);

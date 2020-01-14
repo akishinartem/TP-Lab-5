@@ -6,7 +6,7 @@ using namespace std;
 class Prepod : public VYZ {
 private:
 	FIO prepFIO;
-	int groups;
+	char groups;
 	string disc;
 public:
 	Prepod();

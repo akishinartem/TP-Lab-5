@@ -6,7 +6,7 @@ using namespace std;
 int main() {
 	setlocale(LC_ALL, "Rus");
 	Keeper Contain;
-	int menu = 0;
+	char menu = 0;
 	cout << "Добро пожаловать!" << endl;
 	do {
 		try {
@@ -21,37 +21,37 @@ int main() {
 				<< "[0] Выход." << endl
 				<< ">> ";
 			cin >> menu;
-			if (menu > 6 || menu < 0) {
+			if ((!isdigit(menu)) && ((menu >= 7) || (menu <= -1))) {
 				throw 1;
 			}
 			switch (menu) {
-			case 1:
+			case '0':
+				break;
+			case '1':
 				Contain.Add();
 				break;
-			case 2:
+			case '2':
 				Contain.Edit();
 				break;
-			case 3:
+			case '3':
 				Contain.Del();
 				break;
-			case 4:
+			case '4':
 				Contain.Save();
 				break;
-			case 5:
+			case '5':
 				Contain.Load();
 				break;
-			case 6:
+			case '6':
 				cout << Contain;
-				break;
-			default:
 				break;
 			}
 		}
-		catch (...) {
+		catch (int) {
 			cout << "Допустимые значения переменной 'menu' = 0, 1, 2, 3, 4, 5, 6." << endl;
 		}
 		system("pause");
 		system("cls");
-	} while (menu != 0);
+	} while (menu != '0');
 	return 0;
 }

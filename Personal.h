@@ -7,7 +7,7 @@ class Personal : public VYZ {
 private:
 	FIO persFIO;
 	string spec;
-	int tel;
+	char tel;
 	string obl;
 public:
 	Personal();

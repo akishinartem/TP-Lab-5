@@ -45,22 +45,20 @@ void Keeper::Add() {
 			temp[size] = new Personal;
 			break;
 		}
-		if (!temp[size])
+		if ((!temp[size]) || (temp[size]->GetErr()))
 			throw 1;
-		else
-			cout << "Объект успешно добавлен!" << endl;
 		size++;
 		if (Value)
 			delete[] Value;
 		Value = temp;
+		cout << "Объект успешно добавлен!" << endl;
 	}
-	catch (...) {
+	catch (int) {
 		cout << "Объект не был добавлен из-за ошибки." << endl;
 	}
 }
 
 void Keeper::Add(int _type, ifstream &fin) {
-	try {
 		VYZ** temp = new VYZ * [size + 1];
 		int i = 0;
 		while (i < size) {
@@ -78,19 +76,12 @@ void Keeper::Add(int _type, ifstream &fin) {
 			temp[size] = new Personal(fin);
 			break;
 		}
-		if (!temp[size])
-			throw 1;
-		else
-			::count++;
+		::count++;
 		size++;
 		if (Value)
 			delete[] Value;
 		Value = temp;
 	}
-	catch (...) {
-		cout << "Объект не был добавлен из-за ошибки." << endl;
-	}
-}
 
 void Keeper::Edit() {
 	int x;
@@ -120,12 +111,12 @@ void Keeper::Edit() {
 		}
 		x -= 1;
 		Value[x]->Edit();
-		if (!Value[x])
+		if ((Value[x]->GetErr()) || (!Value[x]))
 			cout << "Редактирование не удалось." << endl;
 		else
 			cout << "Редактирование завершено." << endl;
 	}
-	catch (...) {
+	catch (int) {
 		cout << "Выбранный пункт недоступен." << endl;
 	}
 }
@@ -149,6 +140,7 @@ void Keeper::Del() {
 			break;
 		}
 	}
+	cout << ">> ";
 	cin >> x;
 	x -= 1;
 	if (size == 1) {
@@ -162,7 +154,7 @@ void Keeper::Del() {
 	for (int i = 0; i < size; i++) {
 		if (x == i)
 			continue;
-		temp[j] = Value[i];
+		temp[j--] = Value[i];
 	}
 	delete[] Value;
 	Value = temp;
